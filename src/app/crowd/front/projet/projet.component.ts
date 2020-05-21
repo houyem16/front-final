@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {Projet} from '../../classes/projet';
 
@@ -53,3 +54,4 @@ export class ProjetComponent implements OnInit {
   }
 
 }
+
