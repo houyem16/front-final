@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Projet} from '../../classes/projet';
+import { ActivatedRoute } from '@angular/router';
+import { ProjetService } from 'app/crowd/providers/projet.service';
 
 @Component({
   selector: 'app-projet',
@@ -10,7 +12,8 @@ import {Projet} from '../../classes/projet';
 export class ProjetComponent implements OnInit {
 
   single: any[];
-  view: any[] = [500, 400];
+  view: any[] = [400, 300];
+  selected_project_id: number;
 
   // options
   showLegend = true;
@@ -23,26 +26,33 @@ export class ProjetComponent implements OnInit {
   currentPage = 'About';
   projet: Projet = new Projet();
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private prj_serv: ProjetService) {
    this.single = [
      {
-       "name": "Germany",
+       "name": "collecté",
        "value": 40632,
-       "extra": {
-         "code": "de"
-       }
+      } ,
+       {
+        "name": "reste",
+        "value": 20632,
+      
      }
    ];
   }
 
   ngOnInit() {
-
-    this.projet = {
-      id_projet: 1, categorie: {id_categorie: 1, nom_categorie: 'association'},
-      budget_prevu: 3000, date_fin_prevu: '30/11/2021', description: 'ceci est un projet',
-      porteur_projet: {email: 'a@a.com', id_utilisateur: 1, nom: 'test', prenom: 'test 2'}, resume: 'resumee', somme_collectee: 200,
-      somme_min: 1000, titre_projet: '9offet romdhan', image_url: 'https://www.cha9a9a.tn/media/cache/cha9a9a_pic/uploads/images/a47b1a71dc353e90bc4dc6fafcfece8a04237b19.png'
-    };
+      this.route.params.subscribe(
+        params => {
+            this.selected_project_id = +params['id'];
+            this.prj_serv.get_projet(this.selected_project_id).subscribe(
+              (res) => {
+                this.projet = res;
+              }
+            );
+                  }
+      ); 
+      
+      
   }
 
   onSelect(event) {

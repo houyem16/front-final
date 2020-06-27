@@ -1,4 +1,7 @@
 <section id="fabs-examples">
+    <div class="card-img">
+        <img class="img-fluid" style="width:100% ; height:250px ;" src="https://img.freepik.com/vecteurs-libre/banniere-typographie-horizontale-financement-participatif-sertie-illustration-plate-symboles-idee-but_1284-29485.jpg?size=626&ext=jpg" alt="Card image cap">
+        </div>
     <div class="row text-left">
         <div class="col-12 mt-3 mb-1">
             <div class="content-header">Top projets</div>
@@ -11,21 +14,21 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{projet.titre_projet}}</h4>
-                    <h6 class="card-subtitle text-muted">{{projet.resume}}</h6>
+                    
                 </div>
                 <div class="card-content">
-                    <div class="card-img" routerLink="/crowd/front/projet">
-                        <img class="img-fluid" [src]="projet.image_url" alt="Card image cap">
+                    <div class="card-img" routerLink="/crowd/front/projet/{{projet.id_projet}}">
+                        <img class="img-fluid" src="http://localhost/pfa2/projet/public/images/{{projet.image_url}}" alt="Card image cap">
                         <a class="btn btn-floating halfway-fab btn-large bg-danger"><i class="ft-plus"></i></a>
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            {{projet.description}}
+                            {{projet.resume}}
                         </p>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="card-link danger">collecté : {{projet.somme_collectee}}</a>
+                    <a class="card-link danger"> {{projet.somme_collectee}}</a>
                     <a class="card-link danger">total: {{projet.budget_prevu}}</a>
                 </div>
             </div>

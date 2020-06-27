@@ -16,7 +16,16 @@ export class ProjetService {
   get_all_projets() {
     return this.http.get<Projet[]>(`${this.urlapi}projet`);
   }
+
+  saveimage(formdatas) {
+    return this.http.post<Serverrepense>(`${this.urlapi}uploadimage`, formdatas);
+  }
+
+  get_projet(idprojet) {
+    return this.http.get<Projet>(`${this.urlapi}projet/${idprojet}`);
+  }
+
    ajouterp(projet){
-    return this.http.post<Serverrepense>(`${this.urlapi}projet`, {projet: projet});
+    return this.http.post<Serverrepense>(`${this.urlapi}ajouterprojet`, {projet: projet});
    }
 }

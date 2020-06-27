@@ -13,6 +13,7 @@ export class Projet {
     categorie: Categorie;
     porteur_projet: Client;
     image_url: string;
+    portee: string;
 }
 
 /*

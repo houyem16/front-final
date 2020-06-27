@@ -36,11 +36,11 @@
             <div class="form-group col-md-6">
                 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions"  value="option2" [(ngModel)]="nprojet.inlineRadioOptions">
+                    <input class="form-check-input" type="radio" name="portee"  value="association" [(ngModel)]="nprojet.portee">
                     <label class="form-check-label" for="inlineRadio2">Mon association</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions"  value="option3" [(ngModel)]="nprojet.inlineRadioOptions">
+                    <input class="form-check-input" type="radio" name="portee"  value="entreprise" [(ngModel)]="nprojet.portee">
                     <label class="form-check-label" for="inlineRadio3">Mon entreprise</label>
                   </div>
 
@@ -58,34 +58,36 @@
 
 
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="input">Quel est le montant minimal que vous voulez collecter ?</label>
-            </div>
-            <div class="form-group col-md-6">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions1"  value="option1" [(ngModel)]="nprojet.inlineRadioOptions1">
-                    <label class="form-check-label" for="inlineRadio1">Moins de 3 500 DT</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions1"  value="option2" [(ngModel)]="nprojet.inlineRadioOptions1">
-                    <label class="form-check-label" for="inlineRadio2">Entre 8 000 DT et 15 000 DT</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions1"  value="option3" [(ngModel)]="nprojet.inlineRadioOptions1">
-                    <label class="form-check-label" for="inlineRadio3">Plus de 30 000 DT</label>
-                  </div>
-            </div>
-        </div>
+        
 
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="input">Somme prévue</label>
             </div>
             <div class="form-group col-md-6">
-              <input type="number" class="form-control"  placeholder="Somme prévue" name="sommeprevu" [(ngModel)]="nprojet.sommeprevu">
+              <input type="number" class="form-control"  placeholder="Somme prévue" name="budget_prevu" [(ngModel)]="nprojet.budget_prevu">
             </div>
         </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="input">Quel est le montant minimal que vous voulez collecter ?</label>
+          </div>
+          <div class="form-group col-md-6">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="somme_min"  value="OP1" [(ngModel)]="nprojet.somme_min">
+                  <label class="form-check-label" for="inlineRadio1">Moins de {{get_somme_min()}} DT</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="somme_min"  value="OP2" [(ngModel)]="nprojet.somme_min">
+                  <label class="form-check-label" for="inlineRadio2">Entre {{get_somme_min()}} DT et {{nprojet.budget_prevu}} DT</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="somme_min"  value="OP3" [(ngModel)]="nprojet.somme_min">
+                  <label class="form-check-label" for="inlineRadio3">Plus de {{nprojet.budget_prevu}} DT</label>
+                </div>
+          </div>
+      </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -96,13 +98,26 @@
             </div>
         </div>
 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="input">Choisir une image</label>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target.files)">
+          </div>
+      </div>
+
 
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="input"></label>
             </div>
             <div class="form-group col-md-6">
-                <a class="btn btn-info" routerLink="#" role="button" (click)="ajouterp()">Valider</a>
+              <button class="btn btn-info" (click)="ajouterp()">
+                Valider
+              </button>
             </div>
         </div>
        

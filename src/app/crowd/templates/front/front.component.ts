@@ -1,4 +1,6 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit,  ElementRef, Inject, OnDestroy, Renderer2, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import {Subscription} from 'rxjs';
 import {LayoutService} from '../../../shared/services/layout.service';
 import {ConfigService} from '../../../shared/services/config.service';

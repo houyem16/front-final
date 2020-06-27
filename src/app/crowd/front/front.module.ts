@@ -5,14 +5,19 @@ import { FrontRoutingModule } from './front-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ProjetComponent } from './projet/projet.component'; 
 import {AjouterProjetComponent} from './ajouter-projet/ajouter-projet.component';
+import { PaiementComponent } from './paiement/paiement.component';
+
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [HomeComponent, ProjetComponent,AjouterProjetComponent],
+  declarations: [HomeComponent, ProjetComponent,AjouterProjetComponent,PaiementComponent],
   imports: [
     CommonModule,
     FrontRoutingModule,
-    NgxChartsModule
+    NgxChartsModule,
+    FormsModule
+    
   ]
 })
 export class FrontModule { }
