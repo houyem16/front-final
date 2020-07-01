@@ -14,6 +14,7 @@ export class Projet {
     porteur_projet: Client;
     image_url: string;
     portee: string;
+    owner: Client;
 }
 
 /*

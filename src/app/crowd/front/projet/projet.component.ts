@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {Projet} from '../../classes/projet';
 import { ActivatedRoute } from '@angular/router';
 import { ProjetService } from 'app/crowd/providers/projet.service';
+import { UtilisateurService } from 'app/crowd/providers/utilisateur.service';
+import { Client } from 'app/crowd/classes/client';
 
 @Component({
   selector: 'app-projet',
@@ -25,9 +27,12 @@ export class ProjetComponent implements OnInit {
 
   currentPage = 'About';
   projet: Projet = new Projet();
+  utilisateur: Client = new Client();
+  
 
-  constructor(private route: ActivatedRoute, private prj_serv: ProjetService) {
-   this.single = [
+  constructor(private route: ActivatedRoute, private prj_serv: ProjetService, public userserv: UtilisateurService) {
+   this.projet.owner = new Client();
+    this.single = [
      {
        "name": "collecté",
        "value": 40632,
@@ -51,6 +56,12 @@ export class ProjetComponent implements OnInit {
             );
                   }
       ); 
+
+      this.userserv.detailuser(this.userserv.get_email()).subscribe(
+        (res) => {
+          this.utilisateur = res;
+        }
+      );
       
       
   }

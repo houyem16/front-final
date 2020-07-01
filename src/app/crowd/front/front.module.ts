@@ -9,9 +9,10 @@ import { PaiementComponent } from './paiement/paiement.component';
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [HomeComponent, ProjetComponent,AjouterProjetComponent,PaiementComponent],
+  declarations: [HomeComponent, ProjetComponent,AjouterProjetComponent,PaiementComponent, ProfileComponent],
   imports: [
     CommonModule,
     FrontRoutingModule,
