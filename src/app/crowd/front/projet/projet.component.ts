@@ -16,6 +16,7 @@ export class ProjetComponent implements OnInit {
   single: any[];
   view: any[] = [400, 300];
   selected_project_id: number;
+  montant: number;
 
   // options
   showLegend = true;
@@ -46,6 +47,7 @@ export class ProjetComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.montant = 50;
       this.route.params.subscribe(
         params => {
             this.selected_project_id = +params['id'];
@@ -64,6 +66,14 @@ export class ProjetComponent implements OnInit {
       );
       
       
+  }
+
+  do_don() {
+    this.userserv.paiement(this.montant,this.utilisateur.id_utilisateur,this.projet.id_projet).subscribe(
+      (res) => {
+        alert(res.status);
+      }
+    );
   }
 
   onSelect(event) {

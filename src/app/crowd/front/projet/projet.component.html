@@ -34,14 +34,17 @@
           <div class="media-body halfway-fab align-self-end">
             <div class="text-right d-none d-sm-none d-md-none d-lg-block">
               <button type="button" class="btn btn-primary btn-raised mr-2"><i class="fa fa-plus"></i> Follow</button>
+              <div class="mr-3" *ngIf="projet.owner.email !== userserv.get_email()">
               <button
-              *ngIf="projet.owner.email !== userserv.get_email()"
-              type="button" class="btn btn-success btn-raised mr-3" >
+              
+              type="button" class="btn btn-success btn-raised mr-3" (click)="do_don()" >
                 <a
                 
-                routerLink="/crowd/front/paiement/{{projet.id_projet}}"
+              
                 >
               <i class="fa fa-dashcube"></i> Faire un don</a></button>
+              <input name="montant" [(ngModel)]="montant" type="number" placeholder="montant" />
+            </div>
             </div>
             <div class="text-right d-block d-sm-block d-md-block d-lg-none">
               <button type="button" class="btn btn-primary btn-raised mr-2"><i class="fa fa-plus"></i></button>

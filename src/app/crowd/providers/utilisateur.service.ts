@@ -43,4 +43,14 @@ export class UtilisateurService {
   userprojets(email) {
     return this.http.post<Projet[]>(`${this.urlapi}user/userprojets`, {email: email});
   }
+
+  paiement(montant, id_utilisateur, id_projet) {
+    return this.http.post<Serverrepense>(`${this.urlapi}paiement`, 
+    {
+      montant: montant,
+      id_utilisateur: id_utilisateur,
+      id_projet: id_projet
+    }
+    );
+  }
 }
