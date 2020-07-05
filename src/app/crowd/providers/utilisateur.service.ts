@@ -53,4 +53,13 @@ export class UtilisateurService {
     }
     );
   }
+
+  alimenter(montant, id_utilisateur) {
+    return this.http.post<Serverrepense>(`${this.urlapi}alimenter`, 
+    {
+      montant: montant,
+      id_utilisateur: id_utilisateur
+    }
+    );
+  }
 }

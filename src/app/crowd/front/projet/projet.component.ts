@@ -33,17 +33,7 @@ export class ProjetComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private prj_serv: ProjetService, public userserv: UtilisateurService) {
    this.projet.owner = new Client();
-    this.single = [
-     {
-       "name": "collecté",
-       "value": 40632,
-      } ,
-       {
-        "name": "reste",
-        "value": 20632,
-      
-     }
-   ];
+    
   }
 
   ngOnInit() {
@@ -54,6 +44,17 @@ export class ProjetComponent implements OnInit {
             this.prj_serv.get_projet(this.selected_project_id).subscribe(
               (res) => {
                 this.projet = res;
+                this.single = [
+                  {
+                    "name": "collecté",
+                    "value": this.projet.somme_collectee,
+                   } ,
+                    {
+                     "name": "reste",
+                     "value": this.projet.budget_prevu - this.projet.somme_collectee,
+                   
+                  }
+                ];
               }
             );
                   }

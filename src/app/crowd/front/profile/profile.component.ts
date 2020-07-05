@@ -10,7 +10,10 @@ import { Projet } from 'app/crowd/classes/projet';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userserv: UtilisateurService) { }
+  montant: number;
+  constructor(private userserv: UtilisateurService) {
+    this.montant = 50;
+   }
 
  
     //Variable Declaration
@@ -36,6 +39,14 @@ export class ProfileComponent implements OnInit {
 
     showPage(page: string) {
         this.currentPage = page;
+    }
+
+    alimenter() {
+      this.userserv.alimenter(this.montant, this.client.id_utilisateur).subscribe(
+        (res) => {
+          alert(res.status);
+        }
+      );
     }
 
 }

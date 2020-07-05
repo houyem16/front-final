@@ -4,6 +4,8 @@ import {Projet} from '../../classes/projet';
 import { Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UtilisateurService } from 'app/crowd/providers/utilisateur.service';
+import { Client } from 'app/crowd/classes/client';
 @Component({
   selector: 'app-ajouter-projet',
   templateUrl: './ajouter-projet.component.html',
@@ -14,13 +16,20 @@ export class AjouterProjetComponent {
   nprojet: Projet = new Projet();
   somme_min = 0;
   fileToUpload: File = null;
-  constructor(private router: Router, private projetserv: ProjetService) {
+  Proteurp : Client = new Client();
+  constructor(private router: Router, private projetserv: ProjetService, public userserv: UtilisateurService) {
 
   }
 
   //constructor() { }
 
   ngOnInit(): void {
+    this.userserv.detailuser(this.userserv.get_email()).subscribe(
+      (res) => {
+        this.Proteurp = res;
+        this.nprojet.porteur_projet = this.Proteurp;
+      }
+    );
   }
 
   get_somme_min() {
